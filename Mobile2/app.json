@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Mobile2",
+    "slug": "Mobile2",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },"rnpm": {
+      "assets": [
+        "./src/assets/fonts/"
+      ]}
+  }
+}
