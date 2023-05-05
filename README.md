@@ -23,7 +23,7 @@ Fonctionnalités
 Technologies utilisées
 
 - Front-end : React.js ,React native
-- Back-end : python Django , BeautifulSoup , MySql 
+- Back-end : python Django , BeautifulSoup , MySql , Swagger
 - Design : CSS
 - Outil de gestion de version : Git 
 - Environnement de développement intégré (IDE) : Visual Studio Code , PyCharm
