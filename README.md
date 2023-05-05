@@ -35,7 +35,9 @@ Installation
  - Assurez-vous d'avoir React.js et npm installés sur votre machine.
  - Démarrez l'application en exécutant la commande npm start.
 
-Diagramme de class
+Diagramme de class:
+
+
 <img width="752" alt="diagramme" src="https://user-images.githubusercontent.com/109220808/236583017-d8040574-bf92-4671-8d60-dfec75eaab24.png">
 
 
