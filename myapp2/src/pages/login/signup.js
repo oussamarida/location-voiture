@@ -76,7 +76,7 @@ export default function SignUp() {
       .then((data) => console.log('Success:', data))
       .catch((error) => console.error('Error:', error)); 
   
-          history("/SignupSide/"+id+"/"+datedebut+"/"+datefin);
+          history("/login/"+id+"/"+datedebut+"/"+datefin);
     
    }
   

@@ -18,24 +18,23 @@ function Main() {
 
   const [voiture, setvoiture] = useState([]);
 
+
   useEffect(() => {
     fetch('http://127.0.0.1:8000/ville')
       .then((response) => response.json())
       .then((data) => setVille(data))
       .catch((error) => console.error('Error:', error));
   }, []);
-
-
-
-
-
-
+  
+  useEffect(() => {
+    console.log(ville);
+  }, [ville]);
 
 
     
-      useEffect(() => {
+    useEffect(() => {
     fetch(
-      `http://127.0.0.1:8000/voiture/?nom=&prix_jour=&nombre_siege=&nbr_bagage=&nbr_portes=&climatise=&manuelle=&photourl=&ville=${VilleZ}&type=`,
+      `http://127.0.0.1:8000/voiture/?nom=&prix_jour=&nombre_siege=&nbr_bagage=&nbr_portes=&climatise=&manuelle=&photourl=&ville=${VilleZ}`,
       {
         method: "GET",
       }
@@ -47,21 +46,6 @@ function Main() {
       .catch((error) => console.error(error));
   }, [VilleZ]);
 
-/*
-  const [voiture, setvoiture] = useState([]);
-
-  const handlechSubmit = (event) => {
-    fetch(`http://127.0.0.1:8000/voiture/?nom=&prix_jour=&nombre_siege=&nbr_bagage=&nbr_portes=&climatise=&manuelle=&photourl=&ville=${VilleZ}&type=`, {
-      method: 'GET',
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-      setvoiture(responseData);
-    })
-    .catch((error) => console.error(error));
-
-  };
-*/
   const [datedebut, setdatedebut] = useState('');
   const handledatedebutChange = (event) => {
     setdatedebut(event.target.value);
@@ -89,17 +73,17 @@ function Main() {
           <li><a href="/">HOME</a></li>
           <li><a href="/">SERVICE</a></li>
           <li><a href="#ride">RIDE</a></li>
-          <li><a href="#contact">CONTACT</a></li>
-        </ul>
+         
         <div className="header-btn">
-         <a href className="sign-up"><i className="bx bx-user-circle" /> Rida <i className="bx bx-chevrons-down" /></a>
           <a href="/login" className="sign-in">Log in</a>
         </div>
+        </ul>
+       
       </header>
       <section className="home" id="home">
         <div className="text">
           <h1><span>Trouvez</span> une <br />voiture en location ?</h1>
-          <p>Location de voitures a Marrakech,Casablanca et Tanger au meilleur prix!</p>
+          <p>Location de voitures a Marrakech,Casablanca , Tanger et rabat au meilleur prix!</p>
         </div>
         <div className="form-container">
           <form onSubmit={handleClickutl
@@ -157,7 +141,7 @@ function Main() {
           <h1>Découvrez les meilleures offres  <br /> des revendeurs les mieux notés</h1>
         </div>
         <div className="services-container">
-        {voiture.map((Voiture, index) => <Card2 key={Voiture.id} data={Voiture}  />)
+        {voiture.map((Voiture) => <Card2 key={Voiture.id} data={Voiture}  />)
           }
         </div>                     
       </section>

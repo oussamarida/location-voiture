@@ -1,16 +1,12 @@
 from django.contrib import admin
 
-from .models import Ville, Type, Voiture, Reservation , Client
+from .models import Ville, Voiture, Reservation , Client
 
 
 # Register your models here.
 
 
 
-@admin.register(Type)
-class TypeAdmin(admin.ModelAdmin):
-    list_display = ('nom' , )
-    list_filter = ('nom',)
 
 @admin.register(Ville)
 class VilleAdmin(admin.ModelAdmin):
@@ -21,8 +17,8 @@ class VilleAdmin(admin.ModelAdmin):
 
 @admin.register(Voiture)
 class VoitureAdmin(admin.ModelAdmin):
-    list_display = ('id','nom', 'prix_jour', 'nombre_siege', 'nbr_bagage', 'nbr_portes', 'climatise','manuelle','photourl' ,'ville', 'type' )
-    list_filter = ('id','nom', 'prix_jour', 'nombre_siege', 'nbr_bagage', 'nbr_portes', 'climatise','manuelle','photourl', 'type')
+    list_display = ('id','nom', 'prix_jour', 'nombre_siege', 'nbr_bagage', 'nbr_portes', 'climatise','manuelle','photourl' ,'ville',  )
+    list_filter = ('id','nom', 'prix_jour', 'nombre_siege', 'nbr_bagage', 'nbr_portes', 'climatise','manuelle','photourl')
     search_fields = ( 'ville',)
 
 @admin.register(Reservation)

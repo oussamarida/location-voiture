@@ -4,7 +4,7 @@ import './table.css';
 
 import { useEffect, useState } from 'react';
 
-function Users() {
+function Reservation() {
     useEffect(() => {
       let sidebar = document.querySelector(".sidebar");
       let closeBtn = document.querySelector("#btn");
@@ -26,13 +26,35 @@ function Users() {
     }, []); 
 
     const [user , setusers]=useState([])
-  
+   
     useEffect(() => {
-      fetch('http://127.0.0.1:8000/client')
+      fetch('http://127.0.0.1:8000/reservation')
         .then((response) => response.json())
         .then((data) => setusers(data))
         .catch((error) => console.error('Error:', error));
     }, []);
+
+ const [com , setcomte]=useState([])
+
+
+    useEffect(() => {
+      fetch('http://127.0.0.1:8000/client')
+        .then((response) => response.json())
+        .then((data) => setcomte(data))
+        .catch((error) => console.error('Error:', error));
+        console.log(com)
+    }, []);
+
+
+
+
+    const getClientById = (id) => {
+      return com.find((u) => u.id === id);
+    };
+
+ 
+
+
 
     return (
       <div>
@@ -56,16 +78,14 @@ function Users() {
               <span className="tooltip">Dashboard</span>
             </li>
             <li>
-              <a href="/users">
+            <Link  to="/user" >
                 <i className="bx bx-user" />
                 <span className="links_name">User</span>
-              </a>
+                </Link>
               <span className="tooltip">User</span>
             </li>
             <li>
-
-         
-        <Link  to="/reservation" >
+            <Link  to="/reservation" >
                 <i className="bx bx-chat" />
                 <span className="links_name">Reservation</span>
                 </Link>
@@ -91,7 +111,7 @@ function Users() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 text-center mb-5">
-              <h2 className="heading-section">Users</h2>
+              <h2 className="heading-section">Reservation</h2>
             </div>
           </div>
           <div className="row">
@@ -100,25 +120,19 @@ function Users() {
                 <table className="table">
                   <thead className="thead-dark">
                     <tr>
-                      <th>ID </th>
-                      <th>Username</th>
-                      <th>age</th>
-                      <th>date_permis</th>
-                      <th>ref_permis</th>
-                      <th>Email</th>
-                      <th>password</th>
+                      <th>date_debut</th>
+                      <th>date_fin</th>
+                      <th>voiture</th>
+                      <th>client</th>
                     </tr>
                   </thead>
                   <tbody>
                   {user.map((user, index) => (
                     <tr className="alert" role="alert" key={index}>
-                      <td>{user.id}</td>
-                      <th scope="row">{user.username}</th>
-                      <td>{user.age}</td>
-                      <td>{user.date_permis}</td>
-                      <td>{user.ref_permis}</td>
-                      <td>{user.email}</td>
-                      <td>{user.password}</td>
+                      <th scope="row">{user.date_debut}</th>
+                      <td>{user.date_fin}</td>
+                      <td>{user.voiture}</td>
+                      <td>{getClientById(user.client)?.username}</td>
                     </tr>
                     ))} 
                   </tbody>
@@ -134,4 +148,4 @@ function Users() {
 
 }
   
-export default Users;
+export default Reservation;

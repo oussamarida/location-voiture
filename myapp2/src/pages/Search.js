@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 
 import "./search.css";
 import { useEffect, useState } from "react";
+import { convertLength } from "@mui/material/styles/cssUtils";
 
 export default function Search() {
   let { VilleZ } = useParams();
@@ -10,6 +11,7 @@ export default function Search() {
 
   
   const [voiture, setvoiture] = useState([]);
+  const [resvoiture, setResvoiture] = useState([]);
   const [Maxprice, setMaxprice] = useState(0);
   const [Minprice, setMinprice] = useState(0);
 
@@ -21,9 +23,14 @@ export default function Search() {
     setMinprice(parseFloat(event.target.value));
   };
 
-  const handlechSubmit2 = () => {
+  
+
+
+  const [reservation, setReservation] = useState([]);
+
+  useEffect(() => {
     fetch(
-      `http://127.0.0.1:8000/voiture/?nom=&prix_jour=&nombre_siege=&nbr_bagage=&nbr_portes=&climatise=&manuelle=&photourl=&ville=${VilleZ}&type=`,
+      `http://127.0.0.1:8000/voiture/?nom=&prix_jour=&nombre_siege=&nbr_bagage=&nbr_portes=&climatise=&manuelle=&photourl=&ville=${VilleZ}`,
       {
         method: "GET",
       }
@@ -33,37 +40,60 @@ export default function Search() {
         setvoiture(responseData);
       })
       .catch((error) => console.error(error));
-    const filteredVoiture = voiture.filter(
+  }, []);
+
+
+
+  useEffect(() => {
+    fetch(
+      `http://127.0.0.1:8000/reservation`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
+        setReservation(responseData);
+      })
+      .catch((error) => console.error(error));
+      
+  }, [voiture]);
+
+
+
+
+  useEffect(() => {
+    const filteredreservation = reservation.filter(res => Date.parse(res.date_debut) >= Date.parse(datedebut) && Date.parse(res.date_debut) <= Date.parse(datefin) || Date.parse(res.date_fin) >= Date.parse(datedebut) && Date.parse(res.date_fin) <= Date.parse(datefin));
+    const data = voiture.filter(car => !filteredreservation.some(res => res.voiture === car.id));
+    setResvoiture(data)
+  }, [reservation]);
+
+
+
+
+  const handlechSubmit2 = (e) => {
+    e.preventDefault()
+ 
+    const filteredreservation = reservation.filter(res => Date.parse(res.date_debut) >= Date.parse(datedebut) && Date.parse(res.date_debut) <= Date.parse(datefin) 
+    || Date.parse(res.date_fin) >= Date.parse(datedebut) && Date.parse(res.date_fin) <= Date.parse(datefin));
+    const data = voiture.filter(car => !filteredreservation.some(res => res.voiture === car.id));
+    const filteredVoiture = data.filter(
       (car) =>
         parseFloat(car.prix_jour) >= Minprice &&
         parseFloat(car.prix_jour) <= Maxprice
     );
-    setvoiture(filteredVoiture);
-    console.log(filteredVoiture);
-    console.log(voiture)
+    setResvoiture(filteredVoiture);
   };
+  
 
-  useEffect(() => {
-    fetch(
-      `http://127.0.0.1:8000/voiture/?nom=&prix_jour=&nombre_siege=&nbr_bagage=&nbr_portes=&climatise=&manuelle=&photourl=&ville=${VilleZ}&type=`,
-      {
-        method: "GET",
-      }
-    )
-      .then((response) => response.json())
-      .then((responseData) => {
-        setvoiture(responseData);
-      })
-      .catch((error) => console.error(error));
-    console.log("noooo");
-  }, []);
+  
+
 
   return (
     <div>
       <meta charSet="UTF-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>complete responsive real estate website design tutorial</title>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -78,77 +108,60 @@ export default function Search() {
         </nav>
       </header>
       <section className="home" id="home">
-        <form action>
+        <form onSubmit={handlechSubmit2}>
           <h3>find your perfect Cars</h3>
           <div className="inputBox">
             <input
               type="number"
               name={Minprice}
+              required = {true}
               onChange={handleMinrix}
               placeholder="Price min"
               style={{ borderRadius: "40px" }}
+              min={0}
               id
             />
             <input
               type="number"
+              required
               name={Maxprice}
               onChange={handleMaprix}
               placeholder="Price max"
               style={{ borderRadius: "40px" }}
+              min={0}
               id
             />
-            <select name id style={{ borderRadius: "40px" }}>
-              <option value disabled hidden selected>
-                Bagage
-              </option>
+            {/* <select name id style={{ borderRadius: "40px" }}  value={bagages} defaultValue={"1 bagages"} onChange={handlebagages}>
               <option value="1 bagages">1 Bagage</option>
               <option value="2 bagages">2 Bagage</option>
               <option value="3 bagages">3 Bagage</option>
               <option value="4 bagages">4 Bagage</option>
               <option value="4 bagages">5 Bagage</option>
             </select>
-            <select style={{ borderRadius: "40px" }} name id>
+            <select style={{ borderRadius: "40px" }}  value={portes}  onChange={handleportes} name id>
               <option value disabled hidden selected>
                 Portes
               </option>
-              <option value="1 portes">1 Portes</option>
-              <option value="2 portes">2 Portes</option>
-              <option value="3 portes">3 Portes</option>
-              <option value="4 portes">4 Portes</option>
-              <option value="5 portes">5 Portes</option>
+              <option value="1+portes">1 Portes</option>
+              <option value="2+portes">2 Portes</option>
+              <option value="3+portes">3 Portes</option>
+              <option value="4+portes">4 Portes</option>
+              <option value="5+portes">5 Portes</option>
             </select>
-            <select style={{ borderRadius: "40px" }} name id>
+            <select style={{ borderRadius: "40px" }}  value={places}  onChange={handleplaces} name id>
               <option value disabled hidden selected>
                 Place
               </option>
-              <option value="1 places">1 place</option>
-              <option value="2 places">2 place</option>
-              <option value="3 places">3 place</option>
-              <option value="4 places">4 place</option>
-              <option value="5 places">5 place</option>
-            </select>
-            <fieldset>
-              <legend>Climatise:</legend>
-              <div>
-                <input type="radio" id="scales" name="climatise" checked />
-                <label htmlFor="scales">Climatise</label>
-              </div>
-              <div>
-                <input type="radio" id="horns" name="climatise" />
-                <label htmlFor="horns">Non Climatise</label>
-              </div>
-            </fieldset>
-            <select style={{ borderRadius: "40px" }} name id>
-              <option value disabled hidden selected>
-                Type
-              </option>
-              <option value="AUTOMATIQUE">AUTOMATIQUE</option>
-              <option value="Manuelle">MANUELLE</option>
-            </select>
+              <option value="1+places">1 place</option>
+              <option value="2+places">2 place</option>
+              <option value="3+places">3 place</option>
+              <option value="4+places">4 place</option>
+              <option value="5+places">5 place</option>
+            </select> */}
           </div>
           <input
-            type="button"
-            onClick={handlechSubmit2}
+            type="Submit"
+           
             value="Recherche"
             className="btn"
           />
@@ -161,7 +174,7 @@ export default function Search() {
         </h1>
 
         <div className="box-container">
-          {voiture.map((Voiture, index) => (
+          {resvoiture.map((Voiture, index) => (
             <div className="box" key={index}>
               <div class="card-header avengerEndgame">
                 <div class="card-header-icon">

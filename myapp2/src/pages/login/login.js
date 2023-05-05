@@ -69,6 +69,8 @@ export default function Login() {
       .then((data) => console.log('Success:', data))
       .catch((error) => console.error('Error:', error)); 
    }
+   alert("We gona sent you email , thank u")
+   history("/")
   };
 
 
@@ -114,11 +116,14 @@ export default function Login() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-            }}
-          >
+            }}>  
+            
+             <Link  href="/" >     
             <Avatar sx={{ m: 20, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
-            </Avatar>
+            </Avatar>   
+            
+            </Link>
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>

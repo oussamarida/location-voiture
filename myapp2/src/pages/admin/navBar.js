@@ -8,6 +8,7 @@ import data2 from '../../jsonfile/locVoitureRabat.json'
 import data3 from '../../jsonfile/tanger.json'
 import { useState } from 'react';
 import Card from '../cards/cards';
+import { Link } from 'react-router-dom';
 
 
 
@@ -54,8 +55,8 @@ function Nav() {
 
     function handleCardClick(data2) {
        
-       const data = {nom: data2.nom,prix_jour: parseFloat(data2.prix), nombre_siege: data2.nbr_places , nbr_bagage:   data2.nbr_bagage   ,nbr_portes:data2.nbr_portes , climatise:data2.climatise_ou_pas , manuelle:data2.Manuelle , photourl:   data2.image , ville:get(selectedValue) , type: 1};
-       alert(`You clicked on ${data2.climatise_ou_pas}, ${data.ville} . Price: ${data.type}$`);
+       const data = {nom: data2.nom,prix_jour: parseFloat(data2.prix), nombre_siege: data2.nbr_places , nbr_bagage:   data2.nbr_bagage   ,nbr_portes:data2.nbr_portes , climatise:data2.climatise_ou_pas , manuelle:data2.Manuelle , photourl:   data2.image , ville:get(selectedValue) };
+       alert(`${data.nom}  added`);
        fetch('http://127.0.0.1:8000/voiture/', {
          method: 'POST',
          headers: { 'Content-Type': 'application/json' },
@@ -113,17 +114,19 @@ function Nav() {
               <span className="tooltip">Dashboard</span>
             </li>
             <li>
-              <a href="/users">
+            <Link  to="/user" >
                 <i className="bx bx-user" />
                 <span className="links_name">User</span>
-              </a>
+                </Link>
               <span className="tooltip">User</span>
+
+
             </li>
             <li>
-              <a href="/reservation">
+            <Link  to="/reservation" >
                 <i className="bx bx-chat" />
                 <span className="links_name">Reservation</span>
-              </a>
+                </Link>
               <span className="tooltip">Reservation</span>
             </li>
            
@@ -135,6 +138,9 @@ function Nav() {
               <div className="job">Admin</div>
             </div>
           </div>
+          <Link  to="/login" >
+          <i className="bx bx-log-out" id="log_out" style={{cursor : "pointer"}} />
+        </Link>
           <i className="bx bx-log-out" id="log_out" style={{cursor : "pointer"}} />
         </li>
       </ul>

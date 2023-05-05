@@ -163,3 +163,10 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'https://3f83-41-140-244-97.ngrok-free.app',
 ]
+
+
+DATE_INPUT_FORMATS = [
+    '%Y-%m-%d',
+    '%m/%d/%Y',
+    '%m/%d/%y'
+]
