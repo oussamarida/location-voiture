@@ -1,4 +1,5 @@
- location-voiture
+location-voiture
+ 
 Notre projet est "location de voitures". C'est un Site web et une application  mobile qui permet aux utilisateurs de rechercher des voitures 
 en fonction de leur emplacement,de leur type et de leur disponibilité.
 
@@ -29,10 +30,10 @@ Environnement de développement intégré (IDE) : Visual Studio Code , PyCharm
 
 Installation
 
-1 - Pour installer l'application localement, suivez ces étapes :
-2 - Clonez le dépôt sur votre machine locale en utilisant la commande git clone.
-3 - Assurez-vous d'avoir React.js et npm installés sur votre machine.
-4 - Démarrez l'application en exécutant la commande npm start.
+ - Pour installer l'application localement, suivez ces étapes :
+1 - Clonez le dépôt sur votre machine locale en utilisant la commande git clone.
+2 - Assurez-vous d'avoir React.js et npm installés sur votre machine.
+3 - Démarrez l'application en exécutant la commande npm start.
 
 Diagramme de class
 <img width="752" alt="diagramme" src="https://user-images.githubusercontent.com/109220808/236583017-d8040574-bf92-4671-8d60-dfec75eaab24.png">
