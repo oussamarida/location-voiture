@@ -22,18 +22,18 @@ Fonctionnalités
 
 Technologies utilisées
 
-Front-end : React.js ,React native
-Back-end : python Django , BeautifulSoup , MySql 
-Design : CSS
-Outil de gestion de version : Git 
-Environnement de développement intégré (IDE) : Visual Studio Code , PyCharm
+- Front-end : React.js ,React native
+- Back-end : python Django , BeautifulSoup , MySql 
+- Design : CSS
+- Outil de gestion de version : Git 
+- Environnement de développement intégré (IDE) : Visual Studio Code , PyCharm
 
 Installation
 
  - Pour installer l'application localement, suivez ces étapes :
-1 - Clonez le dépôt sur votre machine locale en utilisant la commande git clone.
-2 - Assurez-vous d'avoir React.js et npm installés sur votre machine.
-3 - Démarrez l'application en exécutant la commande npm start.
+- Clonez le dépôt sur votre machine locale en utilisant la commande git clone.
+ - Assurez-vous d'avoir React.js et npm installés sur votre machine.
+ - Démarrez l'application en exécutant la commande npm start.
 
 Diagramme de class
 <img width="752" alt="diagramme" src="https://user-images.githubusercontent.com/109220808/236583017-d8040574-bf92-4671-8d60-dfec75eaab24.png">
