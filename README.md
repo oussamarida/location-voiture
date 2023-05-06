@@ -38,7 +38,8 @@ Installation
 Diagramme de class:
 
 
-<img width="752" alt="diagramme" src="https://user-images.githubusercontent.com/109220808/236583017-d8040574-bf92-4671-8d60-dfec75eaab24.png">
+<img width="917" alt="diagramme" src="https://user-images.githubusercontent.com/109220808/236617199-3de27970-4d2c-45d2-8bae-1552db95fafa.png">
+
 
 
 
