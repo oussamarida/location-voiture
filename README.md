@@ -41,6 +41,14 @@ Diagramme de class:
 <img width="917" alt="diagramme" src="https://user-images.githubusercontent.com/109220808/236617199-3de27970-4d2c-45d2-8bae-1552db95fafa.png">
 
 
+![1](https://user-images.githubusercontent.com/109220808/236634792-9b9a44a3-a45f-4db4-a472-82b9d8ccd0ba.png)
+
+![2](https://user-images.githubusercontent.com/109220808/236634800-bea8440c-9f69-46d4-91f8-29e2eeab371f.png)
+
+![3](https://user-images.githubusercontent.com/109220808/236634808-f2cce46c-117c-4f76-a11b-b4e2b067b588.png)
+
+![8](https://user-images.githubusercontent.com/109220808/236634816-1083db9a-2c09-4353-913b-da1de33c4e6b.png)
+
 
 
 
