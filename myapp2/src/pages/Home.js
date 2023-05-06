@@ -130,7 +130,7 @@ function Main() {
           <div className="box">
             <i className="bx bxs-microphone" />
             <h2>24/7 Support et aide</h2>
-            <p>Nous sommes à votre service durant toute la durée de votre location.</p>
+            <p>Nous sommes à votre service durant toute la d!urée de votre location.</p>
           </div>
         </div>
       </section>
