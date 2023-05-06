@@ -10,8 +10,8 @@ export default function Search() {
   let { datefin } = useParams();
 
   
-  const [voiture, setvoiture] = useState([]);
-  const [resvoiture, setResvoiture] = useState([]);
+  
+ 
   const [Maxprice, setMaxprice] = useState(0);
   const [Minprice, setMinprice] = useState(0);
 
@@ -24,8 +24,8 @@ export default function Search() {
   };
 
   
-
-
+ const [resvoiture, setResvoiture] = useState([]);
+const [voiture, setvoiture] = useState([]);
   const [reservation, setReservation] = useState([]);
 
   useEffect(() => {

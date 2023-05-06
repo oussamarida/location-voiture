@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -12,21 +10,20 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Input } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
-
 
 
 
 const theme = createTheme();
 
-export default function Login() {
-
-
-  const [compte , setcompte]= React.useState([])
+export default function SignUp() {
+  let { id } = useParams();
+  let { datedebut } = useParams();
+  let { datefin } = useParams();
   
-  const [email, setEmail] = React.useState('');
-
-  const [password, setPassword] = React.useState('');
+  const [em, setEmail] = React.useState('');
+  const [passwor, setPassword] = React.useState('');
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -35,31 +32,42 @@ export default function Login() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-  let { id } = useParams();
-  let { datedebut } = useParams();
-  let { datefin } = useParams();
 
+  const [name, setusername] = React.useState('');
+  const [ag, setage] = React.useState('');
+
+  const handleusername = (event) => {
+    setusername(event.target.value);
+  };
+
+  const handleage = (event) => {
+    setage(event.target.value);
+  };
+
+
+  const [Dateperm, setDatepermi] = React.useState('');
+  const [refperm, setrefpermi] = React.useState('');
+
+  const handleDatepermi = (event) => {
+    setDatepermi(event.target.value);
+  };
+
+  const handlerefpermi = (event) => {
+    setrefpermi(event.target.value);
+  };
 
   const history = useNavigate();
+  function handleCardClick() {
 
-
-  const handleSubmit = async (event) => {
-    if(email==='admin' && password==="admin"){
-      history("/cars")
-    }
-    const filtereduser = compte.filter(
-      (car) =>
-        car.email === email && car.password===password     
-    );
-    
-    if(filtereduser.length>0){
-   const data={
-    date_debut: datedebut,
-    date_fin: datefin,
-    voiture: id,
-    client: filtereduser[0].id
-   }
-    fetch('http://127.0.0.1:8000/reservation/', {
+    const data = {
+    username: name,
+    email: em,
+    password: passwor,
+    age: ag,
+    date_permis: Dateperm,
+    ref_permis: refperm
+   };
+    fetch('http://127.0.0.1:8000/client/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -67,28 +75,11 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => console.log('Success:', data))
       .catch((error) => console.error('Error:', error)); 
+  
+          history("/login/"+id+"/"+datedebut+"/"+datefin);
+    
    }
-   alert("We gona sent you email , thank u")
-   history("/")
-  };
-
-
-  React.useEffect(() => {
-    fetch(
-      `http://127.0.0.1:8000/client`,
-      {
-        method: "GET",
-      }
-    )
-      .then((response) => response.json())
-      .then((responseData) => {
-        setcompte(responseData);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
-
-
+  
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -115,24 +106,54 @@ export default function Login() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-            }}>  
-            
-             <Link  href="/" >     
-            <Avatar sx={{ m: 20, bgcolor: 'secondary.main' }}>
+            }}
+          >
+            <Avatar sx={{ m: 5, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
-            </Avatar>   
-            
-            </Link>
+            </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Sign UP
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleCardClick} sx={{ mt: 1 }}>
                   <TextField
+                label="username"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                value={name}
+                onChange={handleusername}
+              />
+                   <TextField
+                label="age"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type='number'
+                value={ag}
+                onChange={handleage}
+              />
+                   <Input
+                label="Date permi"
+                variant="outlined"
+                fullWidth
+                value={Dateperm}
+                type='date'
+                onChange={handleDatepermi}
+              />
+                   <TextField
+                label="ref  permi"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                value={refperm}
+                onChange={handlerefpermi}
+              />
+                      <TextField
                 label="Email"
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                value={email}
+                value={em}
                 onChange={handleEmailChange}
               />
           <TextField
@@ -141,7 +162,7 @@ export default function Login() {
           fullWidth
           margin="normal"
           type="password"
-          value={password}
+          value={passwor}
           onChange={handlePasswordChange}
         />
               
@@ -151,15 +172,14 @@ export default function Login() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Sign UP
               </Button>
               <Grid container>
                 <Grid item xs>
                  
                 </Grid>
                 <Grid item>
-                  <Link href= {"/SignupSide/"+id+"/"+datedebut+"/"+datefin} variant="body2">
-                  
+                  <Link href="/" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

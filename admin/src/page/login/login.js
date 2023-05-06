@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AppContext } from '../../AppContext/AppContext';
 
 
 
@@ -20,6 +21,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const theme = createTheme();
 
 export default function Login() {
+  const { setId } = React.useContext(AppContext);
 
 
   const [compte , setcompte]= React.useState([])
@@ -44,14 +46,19 @@ export default function Login() {
 
 
   const handleSubmit = async (event) => {
+   
     if(email==='admin' && password==="admin"){
-      history("/cars")
+      setId(1);
+      history('/cars');
+    }else{
+      history('*');
     }
     const filtereduser = compte.filter(
       (car) =>
         car.email === email && car.password===password     
     );
     
+    alert(filtereduser[0].id)
     if(filtereduser.length>0){
    const data={
     date_debut: datedebut,
@@ -158,8 +165,7 @@ export default function Login() {
                  
                 </Grid>
                 <Grid item>
-                  <Link href= {"/SignupSide/"+id+"/"+datedebut+"/"+datefin} variant="body2">
-                  
+                  <Link href= {"/SignupSide"} variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
