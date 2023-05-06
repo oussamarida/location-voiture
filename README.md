@@ -40,17 +40,26 @@ Diagramme de class:
 
 <img width="917" alt="diagramme" src="https://user-images.githubusercontent.com/109220808/236617199-3de27970-4d2c-45d2-8bae-1552db95fafa.png">
 
-- PAartie Client
 
-![1](https://user-images.githubusercontent.com/109220808/236634792-9b9a44a3-a45f-4db4-a472-82b9d8ccd0ba.png)
+![1](https://user-images.githubusercontent.com/109220808/236645516-ca6c17c7-9860-40fd-ab29-60fa629cbb77.png)
 
-![2](https://user-images.githubusercontent.com/109220808/236634800-bea8440c-9f69-46d4-91f8-29e2eeab371f.png)
+![2](https://user-images.githubusercontent.com/109220808/236645518-47a844dc-3ebd-4bb3-80f6-b59a3d31569f.png)
 
-- PAartie Admin
-![3](https://user-images.githubusercontent.com/109220808/236634808-f2cce46c-117c-4f76-a11b-b4e2b067b588.png)
+![3](https://user-images.githubusercontent.com/109220808/236645521-1287b619-5dab-43a4-8c7b-7369f41c29f5.png)
 
-![8](https://user-images.githubusercontent.com/109220808/236634816-1083db9a-2c09-4353-913b-da1de33c4e6b.png)
+![4](https://user-images.githubusercontent.com/109220808/236645533-ed916c9f-8458-4bf7-9e98-d17a18cb84c6.png)
 
+![5](https://user-images.githubusercontent.com/109220808/236645543-7c2d3b25-80dc-413f-9109-ddfe98ed760f.png)
+
+![6](https://user-images.githubusercontent.com/109220808/236645541-3fb089b5-895d-47bc-8280-1c7de1700a27.png)
+
+![7](https://user-images.githubusercontent.com/109220808/236645542-2ce7d706-e0bc-453b-845f-4d94b25efcd0.png)
+
+![8](https://user-images.githubusercontent.com/109220808/236645575-9385037c-7572-49a9-b0cd-45d581c8481b.png)
+
+![Capture d’écran 2023-05-06 150943](https://user-images.githubusercontent.com/109220808/236645584-1a96d709-ac0b-4ee7-9a69-79018383aadd.png)
+
+![Capture d'écran 2023-05-06 152017](https://user-images.githubusercontent.com/109220808/236645587-f52c7474-d692-4ffe-bda6-8ad1e6d86ce8.png)
 
 
 
