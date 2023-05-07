@@ -19,17 +19,14 @@ export default function App() {
         component={HomeScreen}
         options={{title: 'Welcome',  headerStyle: {
           backgroundColor: '#c6d0cf',
-          
         },  statusBarColor: '#262221', headerTintColor: '#948560',
-        
-        
         }}
       />
       <Stack.Screen
       options={{title: 'CHOOSE YOUR CAR'}}
       name="List" component={Cars} />
         <Stack.Screen 
-          options={{headerShown: false }}
+          options={{title: 'Login' }}
         name="Details" 
         component={DetailsScreen} />
     </Stack.Navigator>

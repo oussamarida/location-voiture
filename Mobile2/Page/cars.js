@@ -10,7 +10,7 @@ export default function Cars({ navigation, route }) {
   const { city, startDate, endDate } = route.params;
 
   const onPressItem = (item) => {
-    navigation.navigate("Details", { item });
+    navigation.navigate("Details", { item , startDatee:startDate ,endDate:endDate});
   };
 
   const [resvoiture, setResvoiture] = useState([]);

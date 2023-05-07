@@ -68,7 +68,7 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.row}>
         <TouchableOpacity onPress={() => setShowStartDatePicker(true)}>
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Select Start Date</Text>
+            <Text style={styles.buttonText}>date debut</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => setShowEndDatePicker(true)}>
@@ -199,6 +199,10 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: 150,
     marginLeft: 10,
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
   text2: {
     color: "gray",
